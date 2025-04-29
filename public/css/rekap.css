@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #EBE3D2;
+    font-family: 'Poppins';
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+.profil{
+    padding: 20px;
+    background-color: #a4ac869e;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.profil img{
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.profil .atas{
+    display: flex;
+}
+
+
+.profil h3{
+    font-size: 15px;
+    color: black;
+}
+
+.profil h4{
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.profil .data {
+    padding-left: 10px;
+    padding-top: 7px;
+}
+
+.profil .bawah{
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.loc, .durasi{
+    display: flex;
+    align-items: center;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    align-items: center;
+}
+
+.nav a{
+    text-decoration: none;
+}
+
+.nav button{
+    text-decoration: none;
+    padding: 7px 10px;
+    background-color: #414833;
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    font-family: 'Poppins';
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.tabel{
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+table{
+    background-color: white;
+    width: 100%;
+    border-collapse: collapse;
+    flex-wrap: wrap;
+    font-size: 10px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+table th{
+    background-color: #a4ac869e;
+    padding: 10px;
+    overflow: hidden;
+    color: black;
+}
+
+table td{
+    padding: 7px 10px;
+}
+
+.content h3{
+    color: #414833;
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.tombol{
+    display: flex;
+    padding: 10px;
+}
+
+.tombol a{
+    width: 100%;
+}
+
+.tombol button{
+    width: 100%;
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    font-family: 'Poppins';
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.out{
+    margin-right: 5px;
+    background-color: #414833;
+    color: white;
+}
+
+.set{
+    margin-left: 5px;
+    background-color: #414833;
+    color: white;
+}

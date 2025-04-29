@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Absensi</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+    <div class="content">
+        <div class="title">
+            <img src="/images/sumbar.jpg" alt="">
+            <h4>Absensi Magang <br><span>BAPPEDA SUMBAR</span></h4>
+        </div>
+        <form action="/auth/login" method="post">
+            <input type="text" name="id" placeholder="NIM/NISN" class="input" required>
+            <input type="password" name="pw" id="password" placeholder="Kata Sandi" class="input" required maxlength="8">
+            {{#if error}}
+                <div id="error-message">
+                    <p>{{ error }}</p>
+                </div>
+            {{/if}}
+            <div class="show">
+                <div class="check">
+                    <input type="checkbox" name="" id="showPassword">
+                    <p>Show Password</p>
+                </div>
+            </div>
+            <button class="absen" name="type" value="absen">Absen Hari Ini</button>
+            <button class="rekap" name="type" value="rekap">Lihat Rekap Absensi</button>
+            <div class="regis">
+                <a href="/register">Register di sini</a>
+                <p>jika belum memiliki akun</p>
+            </div>
+        </form>
+    </div>
+
+    <script src="/js/index.js"></script>
+</body>
+</html>

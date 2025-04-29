@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #EBE3D2;
+    max-height: 100vh;
+    font-family: 'Poppins';
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 230px;
+    background-color: #414833;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.profil{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: max-content;
+    height: max-content;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.gambar{
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    border-radius: 100%;
+}
+
+.gambar img{
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+}
+
+.name{
+    width: max-content;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.name h3{
+    color: white;
+    font-size: 15px;
+}
+
+.name span{
+    color: #adb0a2;
+}
+
+.line{
+    border-bottom: 25px;
+    border: 1px solid #A4AC86;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 30px;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.menu a{
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.menu a:hover{
+    background-color: #A4AC86;
+    color: #414833;
+}
+
+.menu .active{
+    background-color: #A4AC86;
+    color: #414833;
+}
+
+.content{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 260px;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.nav{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.date select{
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #A4AC86;
+    font-family: 'Poppins';
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.date option{
+    background-color: white;
+}
+
+.search{
+    display: flex;
+}
+
+.search input{
+    padding: 10px 15px;
+    font-family: 'Poppins';
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 0;
+    width: 545px;
+    outline: none;
+}
+
+.search button{
+    padding: 10px 20px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 0;
+    background-color: #414833;
+    color: white;
+    font-family: 'Poppins';
+}
+
+.download button{
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #414833;
+    font-family: 'Poppins';
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+    border: 0;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: black;
+}
+
+.tabel{
+    margin-top: 25px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+table{
+    background-color: white;
+    width: 100%;
+    border-collapse: collapse;
+    flex-wrap: wrap;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+table th{
+    background-color: #A4AC86;
+    padding: 15px 10px;
+    overflow: hidden;
+}
+
+table td{
+    padding: 15px 10px;
+}
+
+table a{
+    text-decoration: none;
+    padding: 5px 7px;
+    background-color: white;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 8px;
+    color: white;
+}
+
+table .nama{
+    max-width: 100px;
+}
+
+.edit{
+    background-color: rgb(44, 101, 245);
+    padding: 3px 7px;
+    border: 0;
+    border-radius: 10px;
+    color: white;
+    font-family: 'Poppins';
+}
+
+.hapus{
+    background-color: rgb(241, 55, 55);
+}
+
+.id{
+    color: #414833;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.qr{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    margin: auto;
+    position: fixed;
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qr .background{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.qr img{
+    width: 75%;
+}
+
+.qr button{
+    padding: 10px;
+    background-color: #4148333f;
+    border: 0;
+    border-radius: 15px;
+    font-family: 'Poppins';
+    font-size: 13px;
+    font-weight: 600;
+    color: #414833;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.qr a{
+    font-weight: 600;
+    color: #414833;
+}
+
+.qr .share{
+    background-color: #414833;
+    color: white;
+    margin-top: 20px;
+}
+
+.content .nav .date input{
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #A4AC86;
+    font-family: 'Poppins';
+    font-size: 12px;
+}
+
+.dw{
+    font-size: 12px;
+    font-weight: 600;
+    color: #414833;
+}

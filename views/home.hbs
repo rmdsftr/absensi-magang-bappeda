@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAPPEDA</title>
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="profil">
+            <div class="gambar">
+                <img src="/images/sumbar.jpg" alt="">
+            </div>
+            <div class="name">
+                <h3>Absensi Magang <br><span>BAPPEDA SUMBAR</span></h3>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="menu">
+            <a href="" class="active">Absensi Hari ini</a>
+            <a href="/magang">Data Magang</a>
+            <a href="/absen/all">Data Absensi</a>
+            <a href="/setting">Pengaturan</a>
+        </div>
+    </div>
+        
+        <div class="content">
+            <div class="nav">
+                <div class="date">
+                    <h3 id="today">{{ today }}</h3>
+                </div>
+                <div class="search">
+                    <div class="input">
+                        <input type="search" name="" id="searchInput" placeholder="Cari berdasarkan tanggal atau nama atau status masuk atau keterangan">
+                    </div>
+                    <button>Cari</button>
+                </div>
+            </div>
+            <div class="tabel">
+                <table>
+                    <thead>
+                        <th>ID Magang</th>
+                        <th class="nama">Nama</th>
+                        <th>Check In</th>
+                        <th>Status Masuk</th>
+                        <th>Check Out</th>
+                        <th>Keterangan</th>
+                        <th>Aksi</th>
+                    </thead>
+                    <tbody>
+                        {{#each absen}}
+                        <tr>
+                            <td>
+                                <a href="/data/{{ this.id }}" class="id">{{ this.id }}</a>
+                            </td>
+                            <td>{{ this.nama }}</td>
+                            <td>{{ this.jam_masuk }}</td>
+                            {{#ifCond this.status_masuk "Terlambat"}}
+                                <td style="color: red;">{{ this.status_masuk }}</td>
+                            {{else}}
+                                <td>{{ this.status_masuk }}</td>
+                            {{/ifCond}}
+                            <td>{{ this.jam_keluar }}</td>
+                            <td>{{ this.keterangan }}</td>
+                            <td>
+                                <a href="/absen/hapus/{{ this.id }}/{{ this.tanggal }}" class="hapus">Hapus</a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <script>
+            let todayElement = document.getElementById('today');
+
+            let tanggal = todayElement.innerText;
+
+            let date = new Date(tanggal);
+
+            let options = { day: '2-digit', month: 'long', year: 'numeric' };
+            let tanggalFormatted = date.toLocaleDateString('id-ID', options);
+
+            todayElement.innerText = tanggalFormatted;
+
+        </script>
+
+        <script>
+            function searchData() {
+                let searchValue = document.getElementById('searchInput').value.toLowerCase();
+                let rows = document.querySelectorAll(".tabel tbody tr");
+
+                rows.forEach(row => {
+                    let rowText = row.innerText.toLowerCase();
+                    row.style.display = rowText.includes(searchValue) ? "" : "none";
+                });
+            }
+
+            document.getElementById("searchInput").addEventListener("input", searchData);
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        {{#if flash.success}}
+            <script>
+            Swal.fire({
+                icon: 'success',
+                title: '{{flash.success}}',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            </script>
+        {{/if}}
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance</title>
+    <link rel="stylesheet" href="/css/register.css">
+</head>
+<body>
+    <div class="content">
+        <form action="/setting/ubah/{{id}}" method="post" enctype="multipart/form-data">
+            <div class="datadiri">
+                <label for="" class="sub">Ubah Foto Profil</label>
+                <input type="file" name="foto" value="{{ foto }}">
+            </div>
+            <div class="nohp">
+                <label for="" class="sub">Ubah Nomor Whatsapp</label>
+                <input type="text" class="input" name="no_wa" value="{{no_wa}}" placeholder="Anda belum mengisi nomor Whatsapp">
+            </div>
+            <div class="keamanan">
+                <label for="" class="sub">Ubah Kata Sandi</label>
+                <input type="password" name="pw" id="password" placeholder="Kata Sandi Lama" class="input" maxlength="8">
+                <input type="password" name="cpw" id="password2" placeholder="Kata Sandi Baru" class="input" maxlength="8">
+                {{#if error}}
+                    <div id="error-message">
+                        <p>Password dan Konfirmasi tidak sama!</p>
+                    </div>
+                {{/if}}
+                <div class="show">
+                    <input type="checkbox" name="" id="showPassword">
+                    <p>Show Password</p>
+                </div>
+            </div>
+            <button type="submit">Simpan Perubahan</button>
+            <button type="button" class="kembali" onclick="back()">Kembali</button>
+        </form>
+    </div>
+
+    <script src="/js/editprofil.js"></script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAPPEDA</title>
+    <link rel="stylesheet" href="/css/profil.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="profil">
+            <div class="gambar">
+                <img src="/images/sumbar.jpg" alt="">
+            </div>
+            <div class="name">
+                <h3>Absensi Magang <br><span>BAPPEDA SUMBAR</span></h3>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="menu">
+            <a href="/">Absensi Hari ini</a>
+            <a href="/magang">Data Magang</a>
+            <a href="/absen/all">Data Absensi</a>
+            <a href="/setting">Pengaturan</a>
+        </div>
+    </div>
+
+    <div class="content">
+        {{#each data}}
+        <div class="data">
+            <div class="row">
+                <div class="foto">
+                    <img src="/uploads/{{ this.foto }}" alt="">
+                </div>
+                <div class="detail">
+                    <h3>{{ this.nama }}</h3>
+                    <h3>{{ this.id }}</h3>
+                    <h3 class="kampus">{{ this.asal }}</h3>
+                    <h3 class="kampus">{{ this.jurusan }}</h3>
+                    <div class="tgl">
+                        <h5 class="date">{{ mulai }}</h5>
+                        <h5 style="margin-left: 7px; margin-right: 7px;">—</h5>
+                        <h5 class="date">{{ selesai }}</h5>
+                    </div>
+                    <h4>{{ this.status_magang }} <span>di <b>{{ this.nama_bidang }}</b></span></h4>
+                </div>
+                <button onclick="showForm()">
+                    <img src="/images/edit.png" alt="">
+                </button>
+            </div>
+        </div>
+        {{/each}}
+
+        <div class="nav">
+            <h3>Rekap Absensi</h3>
+            <div class="tombol">
+                <button onclick="showTambah()">+ Tambah</button>
+                <a href="/excel/{{ id }}" style="text-decoration: none;">
+                    <button style="margin-left: 10px;">Download Excel</button>
+                </a>
+            </div>
+        </div>
+        <div class="tabel">
+            <table>
+                <thead>
+                    <th>Tanggal</th>
+                    <th>Check In</th>
+                    <th>Status Masuk</th>
+                    <th>Check Out</th>
+                    <th>Keterangan</th>
+                    <th>Aksi</th>
+                </thead>
+                <tbody>
+                    {{#each absen}}
+                    <tr>
+                        <td class="tanggal">{{ this.tanggal }}</td>
+                        <td>{{ this.jam_masuk }}</td>
+                        <td>{{ this.status_masuk }}</td>
+                        <td>{{ this.jam_keluar }}</td>
+                        <td>{{ this.keterangan }}</td>
+                        <td>
+                            <a href="/data/{{ id }}/{{ tanggal }}" class="edit">Edit</a>
+                            <a href="/absen/del/{{ id }}/{{ this.tanggal }}" class="hapus">Hapus</a>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="inputdata" style="display: none;" id="form">
+        <form action="/data/edit" method="post">
+        <input type="text" hidden name="id" value="{{ id }}">
+            <select name="bidang" id="" class="input">
+                <option value="{{ id_bidang }}" hidden>{{ nama_bidang }}</option>
+                {{#each bidang}}
+                <option value="{{ this.id_bidang }}">{{ this.nama_bidang }}</option>
+                {{/each}}
+            </select>
+            <div class="durasi">
+                <div class="mulai">
+                    <label for="">Tanggal Mulai</label>
+                    <input type="date" name="mulai" id="" value="{{ start }}">
+                </div>
+                <div class="selesai">
+                    <label for="">Tanggal Selesai</label>
+                    <input type="date" name="selesai" value="{{ finish }}">
+                </div>
+            </div>
+            <br>
+            <div class="tombol">
+                <button type="button" onclick="closeForm()" class="cancel">Batalkan</button>
+                <button class="simpan">Simpan Perubahan</button>
+            </div>
+            <a href="/data/magang/delete/{{ id }}" class="hapusData">Hapus Data Magang</a>
+        </form>
+    </div>
+
+    <div class="inputdata" id="tambah" style="display: none;">
+        <form action="/absen/add" method="post">
+        <input type="text" name="id" value="{{ id }}" hidden>
+            <div class="tgldate">
+                <label for="">Tanggal</label>
+                <input type="date" name="tgl" id="">
+            </div>
+            <div class="stat">
+                <select name="ket" id="status">
+                    <option value="" hidden>Keterangan</option>
+                    <option value="Hadir">Hadir</option>
+                    <option value="Sakit">Sakit</option>
+                    <option value="Izin">Izin</option>
+                    <option value="Alpha">Alpha</option>
+                </select>
+            </div>
+            <div class="hadir" style="display: none;">
+                <div class="masuk">
+                    <label for="">Jam Masuk</label>
+                    <input type="time" name="masuk" id="">
+                </div>
+                <div class="keluar">
+                    <label for="">Jam Keluar</label>
+                    <input type="time" name="keluar">
+                </div>
+            </div>
+            <button class="simpan" type="submit">Simpan</button>
+            <button class="cancel" type="button" onclick="closeTambah()" style="margin-top: 10px;">Batalkan</button>
+        </form>
+    </div>
+
+    {{#if edit}}
+    <div class="inputdata" id="edit">
+        {{#each formEdit}}
+        <form action="/absen/editAbsen/{{id}}" method="post">
+        <input type="text" name="id" value="{{ this.id }}" hidden>
+            <div class="tgldate">
+                <label for="">Tanggal</label>
+                <input type="date" name="tgl" id="tgl" value="{{ this.tanggal }}" readonly>
+            </div>
+            <div class="stat">
+                <select name="ket" id="statusEdit">
+                    <option value="{{ this.keterangan }}" hidden id="ket" selected>{{ this.keterangan }}</option>
+                    <option value="Hadir">Hadir</option>
+                    <option value="Sakit">Sakit</option>
+                    <option value="Izin">Izin</option>
+                    <option value="Alpha">Alpha</option>
+                </select>
+            </div>
+            <div class="hadirEdit" style="display: none; margin-top:-15px; margin-bottom:15px">
+                <div class="masuk">
+                    <label for="">Jam Masuk</label>
+                    <input type="time" name="masuk" id="masuk" value="{{ this.jam_masuk }}">
+                </div>
+                <div class="keluar">
+                    <label for="">Jam Keluar</label>
+                    <input type="time" name="keluar" id="keluar" value="{{ this.jam_keluar }}">
+                </div>
+            </div>
+            <button class="simpan" type="submit" style="width: 100%;">Simpan</button>
+            <button class="cancel" type="button" onclick="closeEdit()" style="margin-top: 10px; width:100%;">Batalkan</button>
+        </form>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    <script src="/js/profil.js"></script>
+
+
+</body>
+</html>

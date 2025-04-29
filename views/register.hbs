@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance</title>
+    <link rel="stylesheet" href="/css/register.css">
+</head>
+<body>
+    <div class="content">
+        <div class="title">
+            <img src="/images/sumbar.jpg" alt="">
+            <h4>Absensi Magang <br><span>BAPPEDA SUMBAR</span></h4>
+        </div>
+        <form action="/auth/regis" method="post" enctype="multipart/form-data">
+            <div class="datadiri">
+                <label for="" class="sub">Identitas Diri</label>
+                <input type="text" name="id" placeholder="NIM/NISN" class="input">
+                <input type="text" name="nama" placeholder="Nama Lengkap" class="input">
+                <input type="text" name="asal" placeholder="Asal Kampus/Sekolah" class="input">
+                <select name="edu" id="" class="input">
+                    <option value="" hidden>Tingkat Pendidikan</option>
+                    <option value="sma">SMK/SMA sederajat</option>
+                    <option value="D1">D1</option>
+                    <option value="D2">D2</option>
+                    <option value="D3">D3</option>
+                    <option value="D4">D4</option>
+                    <option value="S1">S1</option>
+                </select>
+                <input type="text" name="jurusan" placeholder="Jurusan" class="input">
+                <label for="">Foto 1:1 (opsional)</label>
+                <input type="file" name="foto">
+            </div>
+            <div class="datamagang">
+                <label for="" class="sub">Informasi Magang</label>
+                <select name="bidang" id="" class="input">
+                    <option value="" hidden>Penempatan Magang</option>
+                    {{#each bidang}}
+                        <option value="{{ this.id_bidang }}">{{ this.nama_bidang }}</option>
+                    {{/each}}
+                </select>
+                <div class="tanggal">
+                    <div class="mulai">
+                        <label for="">Mulai Magang</label>
+                        <input type="date" name="mulai" id="">
+                    </div>
+                    <div class="selesai">
+                        <label for="">Selesai Magang</label>
+                        <input type="date" name="selesai">
+                    </div>
+                </div>
+            </div>
+
+            <div class="keamanan">
+                <label for="" class="sub">Keamanan Akun</label>
+                <input type="text" class="input" name="no_wa" placeholder="Nomor Whatsapp" required>
+                <input type="password" name="pw" id="password" placeholder="Kata Sandi Maksimal 8 Karakter" class="input" maxlength="8" required>
+                <input type="password" name="cpw" id="password2" placeholder="Konfirmasi Kata Sandi" class="input" maxlength="8" required>
+                {{#if error}}
+                    <div id="error-message">
+                        <p>Password dan Konfirmasi tidak sama!</p>
+                    </div>
+                {{/if}}
+                <div class="show">
+                    <input type="checkbox" name="" id="showPassword">
+                    <p>Show Password</p>
+                </div>
+            </div>
+            <button type="submit">REGISTER</button>
+            <div class="regis">
+                <a href="/index">Login di sini</a>
+                <p>jika sudah memiliki akun</p>
+            </div>
+        </form>
+    </div>
+
+    <script src="/js/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance</title>
+    <link rel="stylesheet" href="/css/rekap.css">
+</head>
+<body>
+    <div class="profil">
+        <div class="atas">
+            <img src="/uploads/{{ foto }}" alt="">
+            <div class="data">
+                <h3>{{ nama }}</h3>
+                <h3>{{ id }}</h3>
+                <h4>{{ asal }}</h4>
+                <h4>{{ jurusan }}</h4> 
+            </div>
+        </div>
+        <div class="bawah">
+            <div class="loc">
+                <img src="/images/location.png" alt="" style="width: 30px; height: 30px;"> 
+                <p><b>{{ bidang }}</b></p>  
+            </div>
+            <div class="durasi" style="margin-top: -7px;">
+                <img src="/images/calendar.png" alt="" style="width: 30px; height: 30px;">
+                <p><span class="date">{{ mulai }}</span> - <span class="date">{{ selesai }}</span></p>
+            </div>
+        </div>
+        <div class="tombol">
+            <a href="/auth/logout/{{ id }}" style="text-decoration: none;"><button class="out">Logout</button></a>
+            <a href="/setting/akun/{{ id }}" style="text-decoration: none;"><button class="set">Pengaturan Akun</button></a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="nav">
+            <h3>Rekap Absensi</h3>
+            <a href="/attendance/{{ id }}"><button>Ambil absen</button></a>
+        </div>
+        <div class="tabel">
+            <table>
+                <thead>
+                    <th>Tanggal</th>
+                    <th>Check In</th>
+                    <th>Status Masuk</th>
+                    <th>Check Out</th>
+                    <th>Keterangan</th>
+                </thead>
+                {{#if data}}
+                <tbody>
+                    {{#each data}}
+                    <tr>
+                        <td class="tanggal">{{ this.tanggal }}</td>
+                        <td>{{ this.jam_masuk }}</td>
+                        <td>{{ this.status_masuk }}</td>
+                        <td>{{ this.jam_keluar }}</td>
+                        <td>{{ this.keterangan }}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+                {{/if}}
+            </table>
+        </div>
+    </div>
+    </div>
+
+    <script src="/js/rekap.js"></script>
+</body>
+</html>

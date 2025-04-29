@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #EBE3D2;
+    max-height: 100vh;
+    font-family: 'Poppins';
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 230px;
+    background-color: #414833;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.profil{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: max-content;
+    height: max-content;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.gambar{
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    border-radius: 100%;
+}
+
+.gambar img{
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+}
+
+.name{
+    width: max-content;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.name h3{
+    color: white;
+    font-size: 15px;
+}
+
+.name span{
+    color: #adb0a2;
+}
+
+.line{
+    border-bottom: 25px;
+    border: 1px solid #A4AC86;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 30px;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.menu a{
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.menu a:hover{
+    background-color: #A4AC86;
+    color: #414833;
+}
+
+.menu .active{
+    background-color: #A4AC86;
+    color: #414833;
+}
+
+.content{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 260px;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.nav{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search{
+    display: flex;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.search input{
+    padding: 10px 15px;
+    font-family: 'Poppins';
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 0;
+    width: 630px;
+    outline: none;
+}
+
+.search button{
+    padding: 10px 20px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 0;
+    background-color: #414833;
+    color: white;
+    font-family: 'Poppins';
+}
+
+.download button{
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #414833;
+    font-family: 'Poppins';
+    font-size: 13px;
+    font-weight: 500;
+    color: white;
+    border: 0;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: black;
+}
+
+.tabel{
+    margin-top: 25px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+table{
+    background-color: white;
+    width: 100%;
+    border-collapse: collapse;
+    flex-wrap: wrap;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+table th{
+    background-color: #A4AC86;
+    padding: 15px 10px;
+    overflow: hidden;
+}
+
+table td{
+    padding: 15px 10px;
+}
+
+table a{
+    text-decoration: none;
+    padding: 5px 7px;
+    background-color: white;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 8px;
+    color: white;
+}
+
+table .nama{
+    max-width: 100px;
+}
+
+.edit{
+    background-color: rgb(44, 101, 245);
+}
+
+.hapus{
+    background-color: rgb(241, 55, 55);
+}
+
+table .aksi{
+    width: 125px;
+}
+
+.id{
+    color: #414833;
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.inputdata{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+form{
+    width: 500px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.durasi{
+    display: flex;
+}
+
+.durasi input{
+    width: 100%;
+}
+
+.poto{
+    display: flex;
+    flex-direction: column;
+}
+
+form input, form select{
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Poppins';
+    font-size: 13px;
+    border: 1px #414833 solid;
+}
+
+.mulai{
+    margin-right: 10px;
+}
+
+.selesai{
+    margin-left: 10px;
+}
+
+.tombol{
+    display: flex;
+}
+
+form button{
+    width: 50%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 0;
+    font-family: 'Poppins';
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.cancel{
+    margin-right: 10px;
+    background-color: #adb0a2;
+    color: #414833;
+}
+
+.cancel:hover{
+    color: white;
+}
+
+.save{
+    margin-left: 10px;
+    background-color: #414833;
+    color: white;
+}
+
+label{
+    font-size: 12px;
+}
+
+input[type='file']{
+    padding: 0;
+}
+
+input[type='file']::-webkit-file-upload-button{
+    background-color: #adb0a2;
+    padding: 10px;
+    border: 0;
+}
+
+.pagination {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 12px;
+}
+.pagination a, .pagination strong {
+    margin: 0 5px;
+    padding: 8px 12px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+}
+.pagination a:hover {
+    background-color: #eee;
+}
+.pagination strong {
+    background-color: #414833;
+    color: white;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance</title>
+    <link rel="stylesheet" href="/css/alert.css">
+</head>
+<body>
+    
+    {{#if error}}
+        <h4>{{ error }}</h4>
+        <button onclick="back()">Kembali</button>
+    {{/if}}
+
+    {{#if done}}
+        <h4>{{ done }}</h4>
+        <a href="/absen/rekap/{{ id }}" style="text-decoration: none; width:100%;">
+            <button>Kembali</button>
+        </a>
+    {{/if}}
+
+    <script>
+        function back(){
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

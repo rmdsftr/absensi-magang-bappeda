@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #EBE3D2;
+    font-family: 'Poppins';
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 30px;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+h1, p{
+    color: #414833;
+}
+
+p{
+    font-size: 12px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.input {
+    padding: 15px 20px;
+    border: 0;
+    border-radius: 25px;
+    font-family: 'Poppins';
+    background-color: white;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+}
+
+button{
+    width: 100%;
+    padding: 15px;
+    border: 0;
+    border-radius: 25px;
+    font-size: 14px;
+}
+
+.kirim{
+    background-color: #414833;
+    color: white;
+    font-weight: 600;
+    font-family: 'Poppins';
+    margin-top: 20px;
+}
+
+.kembali{
+    background-color: #41483346;
+    color: #414833;
+    font-family: 'Poppins';
+    font-weight: 600;
+    margin-top: 10px;
+}

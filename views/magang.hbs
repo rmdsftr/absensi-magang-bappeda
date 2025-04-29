@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAPPEDA</title>
+    <link rel="stylesheet" href="/css/magang.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="profil">
+            <div class="gambar">
+                <img src="/images/sumbar.jpg" alt="">
+            </div>
+            <div class="name">
+                <h3>Absensi Magang <br><span>BAPPEDA SUMBAR</span></h3>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="menu">
+            <a href="/">Absensi Hari ini</a>
+            <a href="" class="active">Data Magang</a>
+            <a href="/absen/all">Data Absensi</a>
+            <a href="/setting">Pengaturan</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="nav">
+            <div class="download">
+                <button onclick="showForm()">+ Tambah Data Magang</button>
+            </div>
+            <div class="search">
+                <div class="input">
+                    <input type="search" name="" id="searchInput" placeholder="Cari data">
+                </div>
+                <button onclick="searchData()">Cari</button>
+            </div>
+        </div>
+        <div class="tabel">
+            <table>
+                <thead>
+                    <th>ID Magang</th>
+                    <th class="nama">Nama</th>
+                    <th>Asal Instansi</th>
+                    <th>Jurusan</th>
+                    <th>Penempatan</th>
+                    <th>Tanggal Masuk</th>
+                    <th>Tanggal Selesai</th>
+                    <th>Status Magang</th>
+                </thead>
+                <tbody>
+                    {{#each magang}}
+                    <tr>
+                        <td>
+                            <a href="/data/{{ this.id }}" class="id">{{ this.id }}</a>
+                        </td>
+                        <td>{{ this.nama }}</td>
+                        <td>{{ this.asal }}</td>
+                        <td>{{ this.jurusan }}</td>
+                        <td>{{ this.nama_bidang }}</td>
+                        <td class="date">{{ this.mulai }}</td>
+                        <td class="date">{{ this.selesai }}</td>
+                        {{#ifCond this.status_magang "SEDANG MAGANG"}}
+                            <td style="color: green; font-weight:600;">{{ this.status_magang }}</td>
+                        {{else}}
+                            <td>{{ this.status_magang }}</td>
+                        {{/ifCond}}
+
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <div class="pagination">
+                {{#if hasPreviousPage}}
+                    <a href="/magang?page={{previousPage}}">Previous</a>
+                {{/if}}
+
+                {{#each pages}}
+                    {{#if isCurrent}}
+                        <strong>{{page}}</strong>
+                    {{else}}
+                        <a href="/magang?page={{page}}">{{page}}</a>
+                    {{/if}}
+                {{/each}}
+
+                {{#if hasNextPage}}
+                    <a href="/magang?page={{nextPage}}">Next</a>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+    <div class="inputdata" style="display: none;" id="form">
+        <form action="/data/input" method="post" enctype="multipart/form-data">
+            <input type="text" name="id" placeholder="ID Magang (NIM/NISN/NIK)">
+            <br>
+            <input type="text" name="nama" placeholder="Nama Lengkap">
+            <br>
+            <input type="text" name="asal" placeholder="Asal Instansi">
+            <br>
+            <select name="edu" id="" class="input">
+                <option value="" hidden>Tingkat Pendidikan</option>
+                <option value="sma">SMK/SMA sederajat</option>
+                <option value="D1">D1</option>
+                <option value="D2">D2</option>
+                <option value="D3">D3</option>
+                <option value="D4">D4</option>
+                <option value="S1">S1</option>
+            </select>
+            <br>
+            <input type="text" name="jurusan" placeholder="Jurusan">
+            <br>
+            <select name="bidang" id="">
+                <option value="" hidden>Pilih Penempatan Magang</option>
+                {{#each bidang}}
+                    <option value="{{ this.id_bidang }}">{{ this.nama_bidang }}</option>
+                {{/each}}
+            </select>
+            <br>
+            <div class="durasi">
+                <div class="mulai">
+                    <label for="">Tanggal Mulai</label>
+                    <input type="date" name="mulai" id="">
+                </div>
+                <div class="selesai">
+                    <label for="">Tanggal Selesai</label>
+                    <input type="date" name="selesai">
+                </div>
+            </div>
+            <br>
+            <div class="tombol">
+                <button type="button" onclick="closeForm()" class="cancel">Batalkan</button>
+                <button class="save" type="submit">Simpan</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="/js/magang.js"></script>
+
+</body>
+</html>

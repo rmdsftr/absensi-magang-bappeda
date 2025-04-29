@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAPPEDA</title>
+    <link rel="stylesheet" href="/css/setting.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="profil">
+            <div class="gambar">
+                <img src="/images/sumbar.jpg" alt="">
+            </div>
+            <div class="name">
+                <h3>Absensi Magang <br><span>BAPPEDA SUMBAR</span></h3>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="menu">
+            <a href="/">Absensi Hari ini</a>
+            <a href="/magang">Data Magang</a>
+            <a href="/absen/all">Data Absensi</a>
+            <a href="" class="active">Pengaturan</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="admin">
+            <div class="kiri">
+                <p>Broadcast media:</p>
+                <a href="https://web.whatsapp.com/">Login Ke WhatsApp Web</a>
+            </div>
+            <div class="tengah">
+                <p>Koneksi Wi-Fi:</p>
+                <h5>{{ wifi }}</h5>
+            </div>
+            <div class="kanan">
+                <img src="/images/human.png" alt="">
+                <div class="info">
+                    <h2>Admin</h2>
+                    <p>Magang BAPPEDA</p>
+                </div>
+            </div>
+        </div>
+        <div class="atas">
+            <div class="ip">
+                <div class="kiri">
+                    <p>IPv4 Address Server Saat Ini :</p>
+                    <h2>{{ ip }}</h2>
+                </div>
+                <div class="kanan">
+                    <button onclick="showIP()">
+                        <img src="/images/edit.png" alt="">
+                    </button>
+                </div>
+            </div>
+            <div class="jadwal">
+                <div class="kiri">
+                    <div class="masuk">
+                        <p>Jam Masuk</p>
+                        <h3>{{ masuk }}</h3>
+                    </div>
+                    <div class="keluar">
+                        <p>Jam Pulang</p>
+                        <h3>{{ keluar }}</h3>
+                    </div>
+                </div>
+                <div class="kanan">
+                    <button onclick="showJam()">
+                        <img src="/images/edit.png" alt="">
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="bawah">
+            <div class="nav">
+                <h3>Jadwal Libur</h3>
+                <button onclick="showLibur()">+ Tambah Jadwal Libur</button>
+            </div>
+            <div class="tabel">
+                <table>
+                    <thead>
+                        <th>Tanggal Libur</th>
+                        <th>Keterangan Libur</th>
+                        <th>Aksi</th>
+                    </thead>
+                    <tbody>
+                        {{#each libur}}
+                        <tr>
+                            <td class="tgl">{{ this.tanggal }}</td>
+                            <td>{{ this.deskripsi }}</td>
+                            <td>
+                                <a href="/setting/edit/{{ this.tanggal }}" class="edit">Edit</a>
+                                <a href="/setting/delete/{{ this.tanggal }}" class="hapus">Hapus</a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                <div class="pagination">
+                    {{#if hasPreviousPage}}
+                        <a href="/setting?page={{previousPage}}">Previous</a>
+                    {{/if}}
+
+                    {{#each pages}}
+                        {{#if isCurrent}}
+                            <strong>{{page}}</strong>
+                        {{else}}
+                            <a href="/setting?page={{page}}">{{page}}</a>
+                        {{/if}}
+                    {{/each}}
+
+                    {{#if hasNextPage}}
+                        <a href="/setting?page={{nextPage}}">Next</a>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="inputdata" style="display: none;" id="formJam">
+        <form action="/setting/jam" method="post">
+            <label for="">Jam Masuk</label>
+            <input type="time" name="masuk" value="{{ masuk }}">
+            <label for="" style="margin-top: 10px;">Jam Keluar</label>
+            <input type="time" name="keluar" id="" value="{{ keluar }}">
+            <button type="submit" class="simpan">Simpan</button>
+            <button type="button" class="cancel" onclick="closeJam()">Cancel</button>
+        </form>
+    </div>
+
+    <div class="inputdata" style="display: none;" id="formLibur">
+        <form action="/setting/libur" method="post">
+            <label for="" style="margin-bottom: 5px;">Rentang Libur</label>
+            <div class="tanggal">
+                <input type="date" name="awal" id="" class="awal">
+                <input type="date" name="akhir" id="" class="akhir">
+            </div>
+            <textarea name="desc" id="" rows="3" placeholder="Keterangan Libur"></textarea>
+            <button type="submit" class="simpan">Simpan</button>
+            <button type="button" class="cancel" onclick="closeLibur()">Cancel</button>
+        </form>
+    </div>
+
+    {{#if edit}}
+    <div class="inputdata" id="formLibur">
+        {{#each dataEdit}}
+        <form action="/setting/libur/edit/{{ this.tanggal }}" method="post">
+            <textarea name="desc" id="" rows="3">{{ this.deskripsi }}</textarea>
+            <button type="submit" class="simpan">Simpan</button>
+            <button type="button" class="cancel" onclick="closeEdit()">Cancel</button>
+        </form>
+        {{/each}}
+    </div>
+    {{/if}}
+
+    <div class="inputdata" style="display: none;" id="formIP">
+        <form action="/setting/set-ip" method="post">
+            <label for="" style="margin-bottom: 10px;">Edit IP Address Server</label>
+            <input type="text" name="ip" value="">
+            <button type="submit" class="simpan">Simpan</button>
+            <button type="button" class="cancel" onclick="closeIP()">Cancel</button>
+        </form>
+    </div>
+
+    <script src="/js/setting.js"></script>
+    
+</body>
+</html>

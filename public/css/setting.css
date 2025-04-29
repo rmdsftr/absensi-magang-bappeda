@@ -1,0 +1,437 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #EBE3D2;
+    max-height: 100vh;
+    font-family: 'Poppins';
+}
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 230px;
+    background-color: #414833;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.profil{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: max-content;
+    height: max-content;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.gambar{
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    border-radius: 100%;
+}
+
+.gambar img{
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+}
+
+.name{
+    width: max-content;
+    margin: auto;
+    padding-top: 20px;
+}
+
+.name h3{
+    color: white;
+    font-size: 15px;
+}
+
+.name span{
+    color: #adb0a2;
+}
+
+.line{
+    border-bottom: 25px;
+    border: 1px solid #A4AC86;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 30px;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.menu a{
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.menu a:hover{
+    background-color: #A4AC86;
+    color: #414833;
+}
+
+.menu .active{
+    background-color: #A4AC86;
+    color: #414833;
+}
+
+.content{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 260px;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.admin{
+    width: 100%;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+
+
+.admin .kanan{
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+
+.admin .kanan img{
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+}
+
+.admin .kanan button{
+    width: 100%;
+    padding: 5px 10px;
+    color: #414833;
+    font-weight: 600;
+    font-size: 10px;
+    font-family: 'Poppins';
+    border: 1.5px solid #414833;
+    border-radius: 25px;
+    background-color: white;
+}
+
+.sandi {
+    display: flex;
+    align-items: center;
+  }
+  
+  .sandi input[type="password"],
+  .sandi input[type="text"] {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-size: 12px;
+    width: auto;
+    padding: 0;
+    min-width: 1ch;
+  }
+  
+  .sandi button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0;
+  }
+  
+
+.admin .email, .admin .sandi{
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #414833;
+}
+
+.atas{
+    display: flex;
+    width: 100%;
+}
+
+.jadwal{
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.jadwal h3{
+    color: #414833;
+}
+
+.ip{
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    width: 100%;
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ip h2{
+    color: #414833;
+}
+
+.admin .tengah{
+    text-align: center;
+    align-items: center;
+}
+
+.admin .tengah p, .admin .kiri p{
+    font-size: 12px;
+}
+
+.admin .kiri a, .logged{
+    font-size: 13px;
+    font-weight: 600;
+    color: #414833;
+}
+
+.admin h5{
+    color: #414833;
+}
+
+.masuk{
+    margin-right: 30px;
+    text-align: center;
+}
+
+.keluar{
+    margin-left: 30px;
+    text-align: center;
+}
+
+.jadwal button, .ip button{
+    font-family: 'Poppins';
+    font-size: 12px;
+    background-color: #a4ac8670;
+    color: #414833;
+    font-weight: 500;
+    height: 35px;
+    width: 35px;
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+}
+
+.jadwal .kiri{
+    display: flex;
+}
+
+.content button img{
+    width: 17px;
+    height: 17px;
+}
+
+.nav{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+    color: #414833;
+}
+
+.nav button{
+    padding: 10px;
+    background-color: #414833;
+    color: white;
+    border: 0;
+    border-radius: 10px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.tabel{
+    margin-top: 15px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+table{
+    background-color: white;
+    width: 100%;
+    border-collapse: collapse;
+    flex-wrap: wrap;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 15px;
+}
+
+table th{
+    background-color: #A4AC86;
+    padding: 15px 10px;
+    overflow: hidden;
+}
+
+table td{
+    padding: 15px 10px;
+}
+
+table a{
+    text-decoration: none;
+    padding: 5px 7px;
+    background-color: white;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 8px;
+    color: white;
+}
+
+.edit{
+    background-color: rgb(44, 101, 245);
+}
+
+.hapus{
+    background-color: rgb(241, 55, 55);
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.inputdata{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+form{
+    width: 500px;
+    padding: 30px;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+form input{
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Poppins';
+    font-size: 13px;
+    border: 1px #414833 solid;
+}
+
+form button{
+    padding: 10px;
+    border: 0;
+    border-radius: 10px;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 13px;
+}
+
+form h5{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.simpan{
+    background-color: #414833;
+    color: white;
+    margin-top: 15px;
+}
+
+.cancel{
+    background-color: #adb0a2;
+    color: #414833;
+    margin-top: 10px;
+}
+
+label{
+    font-size: 12px;
+}
+
+.tanggal{
+    display: flex;
+}
+
+input[type="date"]{
+    width: 100%;
+}
+
+.awal{
+    margin-right: 5px;
+}
+
+.akhir{
+    margin-left: 5px;
+}
+
+textarea{
+    resize: none;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px #414833 solid;
+    font-family: 'Poppins';
+    font-size: 13px;
+    margin-top: 15px;
+}
+
+.pagination {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 12px;
+}
+.pagination a, .pagination strong {
+    margin: 0 5px;
+    padding: 8px 12px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+}
+.pagination a:hover {
+    background-color: #eee;
+}
+.pagination strong {
+    background-color: #414833;
+    color: white;
+}

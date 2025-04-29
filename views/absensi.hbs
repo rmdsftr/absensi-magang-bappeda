@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAPPEDA</title>
+    <link rel="stylesheet" href="/css/absensi.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="profil">
+            <div class="gambar">
+                <img src="/images/sumbar.jpg" alt="">
+            </div>
+            <div class="name">
+                <h3>Absensi Magang <br><span>BAPPEDA SUMBAR</span></h3>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="menu">
+            <a href="/">Absensi Hari ini</a>
+            <a href="/magang">Data Magang</a>
+            <a href="" class="active">Data Absensi</a>
+            <a href="/setting">Pengaturan</a>
+        </div>
+    </div>
+        
+        <div class="content">
+            <div class="nav">
+                <div class="date">
+                    <input type="date" id="filterTanggal" onchange="filterTanggal()" value="{{selectedDate}}">
+                </div>
+                <div class="download">
+                    <button onclick="showQR()">QR Code absensi</button>
+                </div>
+                <div class="search">
+                    <div class="input">
+                        <input type="search" name="" id="searchInput" placeholder="Cari berdasarkan tanggal atau nama atau status masuk atau keterangan">
+                    </div>
+                    <button onclick="searchData()">Cari</button>
+                </div>
+            </div>
+            <div class="tabel">
+                <table>
+                    <thead>
+                        <th>Tanggal</th>
+                        <th class="nama">Nama</th>
+                        <th>Check In</th>
+                        <th>Status Masuk</th>
+                        <th>Check Out</th>
+                        <th>Keterangan</th>
+                        <th>Aksi</th>
+                    </thead>
+                    <tbody>
+                        {{#each data}}
+                        <tr>
+                            <td class="tanggal">{{ this.tanggal }}</td>
+                            <td>{{ this.nama }}</td>
+                            <td>{{ this.jam_masuk }}</td>
+                            {{#ifCond this.status_masuk "Terlambat"}}
+                                <td style="color: red;">{{ this.status_masuk }}</td>
+                            {{else}}
+                                <td>{{ this.status_masuk }}</td>
+                            {{/ifCond}}
+                            <td>{{ this.jam_keluar }}</td>
+                            <td>{{ this.keterangan }}</td>
+                            <td>
+                                <a href="/absen/delete/{{ this.id }}/{{ this.tanggal }}" class="hapus">Hapus</a>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <a id="downloadExcel" href="#" class="dw">Download Report Absensi</a>
+        </div>
+
+        <div class="qr" style="display: none;" id="qr">
+                <div class="background">
+                    <img src="{{ qrcode }}" alt="">
+                    <a href="">{{ link }}</a>
+                    <button class="share" onclick="copyText()">Salin ke clipboard untuk broadcast</button>
+                    <button onclick="closeQR()" type="button">Tutup</button>
+                    <textarea id="myTextarea" rows="4" cols="50" readonly hidden>hubungkan ke wifi berikut: {{wifi}}, akses link berikut untuk lakukan absensi: {{link}}</textarea>
+                </div>
+        </div>
+
+        <div class="inputdata" style="display: none;" id="edit">
+            <form action="/absen/edit/{{ this.id }}/{{ this.tanggal }}" method="post">
+                <div class="jam">
+                    <div class="masuk">
+                        <label for="">Jam Masuk</label>
+                        <input type="time" name="masuk" id="">
+                    </div>
+                    <div class="keluar">
+                        <label for="">Jam Keluar</label>
+                        <input type="time" name="keluar">
+                    </div>
+                </div>
+                <button class="simpan">Simpan Perubahan</button>
+                <button type="button" class="batal" onclick="closeEdit()">Batalkan</button>
+            </form>
+        </div>
+
+        <script src="/js/absensi.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const downloadButton = document.getElementById('downloadExcel');
+
+                const urlParams = new URLSearchParams(window.location.search);
+                const filterTanggal = urlParams.get('filterTanggal');
+
+                if (filterTanggal) {
+                    downloadButton.href = `/excel/absen?filterTanggal=${filterTanggal}`;
+                } else {
+                    downloadButton.href = `/excel/absen`;
+                }
+            });
+
+        </script>
+</body>
+</html>
